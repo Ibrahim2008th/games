@@ -18,16 +18,20 @@
                     <th>Genre</th>
                     <th>Platform</th>
                     <th>Rating</th>
+                    <th>Edit</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($games as $game)
                     <tr>
                         <td>{{ $game->id }}</td>
-                        <td>{{ $game->genre }}</td>
                         <td>{{ $game->game_name }}</td>
+                        <td>{{ $game->genre }}</td>
                         <td>{{ $game->platform }}</td>
                         <td>{{ $game->rating }}/10</td>
+                        <td>
+    <a href="/games/edit/{{ $game->id }}" class="btn btn-primary btn-sm">Edit</a>
+</td>
                     </tr>
                 @endforeach
             </tbody>
