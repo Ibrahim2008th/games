@@ -9,11 +9,13 @@
 <body>
     <div class="container" style="margin:40px;">
         <h1 class="display-4">🎮 Game Collection</h1>
+        <a href="/games/create" class="btn btn-success mb-3">🎮 Add Game</a>
         <table class="table">
             <thead class="thead-dark">
                 <tr>
                     <th>ID</th>
                     <th>Game</th>
+                    <th>Genre</th>
                     <th>Platform</th>
                     <th>Rating</th>
                 </tr>
@@ -22,6 +24,7 @@
                 @foreach($games as $game)
                     <tr>
                         <td>{{ $game->id }}</td>
+                        <td>{{ $game->genre }}</td>
                         <td>{{ $game->game_name }}</td>
                         <td>{{ $game->platform }}</td>
                         <td>{{ $game->rating }}/10</td>
