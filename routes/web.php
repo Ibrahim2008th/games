@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\GameController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -22,3 +23,18 @@ require __DIR__.'/auth.php';
 Route::get('/geheim', function () {
     return view('geheim');
 })->middleware('auth');
+
+
+// Iedereen mag de games bekijken
+Route::get('/games', [GameController::class, 'index']);
+
+// Alleen voor ingelogde gebruikers
+Route::middleware('auth')->group(function () {
+    Route::get('/games/create', [GameController::class, 'create']);
+    Route::post('/games/store', [GameController::class, 'store']);
+
+    Route::get('/games/edit/{id}', [GameController::class, 'edit']);
+    Route::post('/games/update/{id}', [GameController::class, 'update']);
+
+    Route::post('/games/destroy/{id}', [GameController::class, 'destroy']);
+});
